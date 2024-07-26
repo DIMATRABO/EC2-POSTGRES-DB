@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+
+  dbprod:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=backend
+      - POSTGRES_PASSWORD=backendpass
+      - POSTGRES_DB=trabo
+      - POSTGRES_MAX_CONNECTIONS=200      
+    ports:
+      - '5433:5432'
+    volumes:
+      - mydataprod:/var/lib/postgresql/dataprod
+
+volumes:
+  mydataprod:
